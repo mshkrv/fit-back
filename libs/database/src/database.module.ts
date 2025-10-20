@@ -9,7 +9,11 @@ import { TypeormService } from './typeorm.service';
     FitConfigModule,
     TypeOrmModule.forRootAsync({
       useClass: TypeormService,
-      dataSourceFactory: async (options: DataSourceOptions) => {
+      dataSourceFactory: async (options: DataSourceOptions | undefined) => {
+        if (!options) {
+          throw new Error('DataSourceOptions must be provided');
+        }
+
         return new DataSource(options).initialize();
       },
     }),

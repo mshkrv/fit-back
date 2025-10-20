@@ -6,6 +6,7 @@ import {
   IDatabaseConfig,
   IJwtConfig,
   IRabbitMqConfig,
+  IRedisConfig,
 } from './interfaces';
 import { EnvironmentEnum } from '../enum';
 
@@ -29,6 +30,9 @@ export class FitConfigService {
 
   get rabbitmq(): IRabbitMqConfig {
     return this.configService.getOrThrow('rabbitmq', { infer: true });
+  }
+  get redis(): IRedisConfig {
+    return this.configService.getOrThrow('redis', { infer: true });
   }
 
   get isSwaggerEnabled(): boolean {

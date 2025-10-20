@@ -1,5 +1,12 @@
 {
   "compilerOptions": {
+    "lib": [
+      "ES2023"
+    ],
+    "strict": true,
+    "resolveJsonModule": true,
+    "rootDir": ".",
+    "skipDefaultLibCheck": true,
     "module": "commonjs",
     "declaration": true,
     "removeComments": true,
@@ -18,6 +25,12 @@
     "strictBindCallApply": false,
     "noFallthroughCasesInSwitch": false,
     "paths": {
+      "@fit/cache": [
+        "libs/cache/src"
+      ],
+      "@fit/cache/*": [
+        "libs/cache/src/*"
+      ],
       "@fit/database": [
         "libs/database/src"
       ],

@@ -4,7 +4,7 @@ import {
   IsDefined,
   IsEnum,
   IsInt,
-  IsString, IsUrl,
+  IsString,
   Matches,
   Max,
   Min,
@@ -16,90 +16,107 @@ import { plainToInstance } from 'class-transformer';
 export class Environment {
   @IsEnum(EnvironmentEnum)
   @IsDefined()
-  NODE_ENV: EnvironmentEnum;
+  NODE_ENV!: EnvironmentEnum;
 
   @IsString()
   @MinLength(1)
-  APP_NAME: string;
+  APP_NAME?: string;
 
   @IsString()
   @Matches(/^\d+\.\d+\.\d+$/)
-  APP_VERSION: string;
+  APP_VERSION?: string;
 
   @IsInt()
   @Min(0)
   @Max(65535)
-  PORT: number;
+  @IsDefined()
+  PORT!: number;
 
   @IsString()
   @MinLength(1)
-  GLOBAL_PREFIX: string;
+  GLOBAL_PREFIX?: string;
 
   @IsBoolean()
-  SWAGGER_ENABLED: boolean;
+  SWAGGER_ENABLED?: boolean;
 
   @IsString()
   @MinLength(1)
   @IsDefined()
-  POSTGRES_HOST: string;
+  POSTGRES_HOST!: string;
 
   @IsInt()
   @Min(0)
   @Max(65535)
   @IsDefined()
-  POSTGRES_PORT: number;
+  POSTGRES_PORT!: number;
 
   @IsString()
   @MinLength(1)
   @IsDefined()
-  POSTGRES_DB: string;
+  POSTGRES_DB!: string;
 
   @IsString()
   @MinLength(1)
   @IsDefined()
-  POSTGRES_USER: string;
+  POSTGRES_USER!: string;
 
   @IsString()
   @MinLength(1)
   @IsDefined()
-  POSTGRES_PASSWORD: string;
+  POSTGRES_PASSWORD!: string;
 
   @IsString()
   @MinLength(1)
-  POSTGRES_URL: string;
+  POSTGRES_URL?: string;
 
   @IsString()
   @MinLength(32)
   @IsDefined()
-  JWT_SECRET_AT: string;
+  JWT_SECRET_AT!: string;
 
   @IsString()
   @MinLength(32)
   @IsDefined()
-  JWT_SECRET_RT: string;
+  JWT_SECRET_RT!: string;
 
   @IsString()
   @MinLength(1)
   @IsDefined()
-  JWT_EXPIRATION_AT: string;
+  JWT_EXPIRATION_AT!: string;
 
   @IsString()
   @MinLength(1)
   @IsDefined()
-  JWT_EXPIRATION_RT: string;
+  JWT_EXPIRATION_RT!: string;
 
   @IsString()
   @MinLength(1)
-  JWT_ISSUER: string;
+  JWT_ISSUER!: string;
 
   @IsString()
   @MinLength(1)
   @IsDefined()
-  RABBITMQ_URLS: string;
+  RABBITMQ_URLS!: string;
 
   @IsString()
   @MinLength(1)
-  RABBITMQ_QUEUE: string;
+  RABBITMQ_QUEUE!: string;
+
+  @IsInt()
+  @Min(0)
+  @Max(65535)
+  @IsDefined()
+  REDIS_PORT!: number;
+
+  @IsString()
+  @MinLength(1)
+  @IsDefined()
+  REDIS_HOST!: string;
+
+  @IsString()
+  @MinLength(1)
+  @IsDefined()
+  REDIS_PASSWORD!: string;
 
   static validate(config: Record<string, unknown>): Environment {
     const validatedConfig = plainToInstance(Environment, config, {

@@ -5,7 +5,8 @@ import {
   dbConfig,
   EnvironmentEnum,
   IAppConfig,
-  IDatabaseConfig, SnakeCaseStrategy,
+  IDatabaseConfig,
+  SnakeCaseStrategy,
 } from '@fit/shared';
 
 @Injectable()

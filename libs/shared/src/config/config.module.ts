@@ -7,6 +7,7 @@ import {
   dbConfig,
   jwtConfig,
   rabbitmqConfig,
+  redisConfig,
 } from './configurations';
 
 @Global()
@@ -24,7 +25,7 @@ export class FitConfigModule {
           isGlobal: true,
           expandVariables: true,
           skipProcessEnv: true,
-          load: [appConfig, dbConfig, jwtConfig, rabbitmqConfig],
+          load: [appConfig, dbConfig, jwtConfig, rabbitmqConfig, redisConfig],
           validationOptions: {
             allowUnknown: false,
             abortEarly: false,
