@@ -23,7 +23,7 @@ export abstract class AbstractEntity {
   updatedAt!: Date;
 
   @DeleteDateColumn({ type: 'timestamp', nullable: true })
-  deletedAt!: Date | null;
+  deletedAt?: Date | null;
 
   get __entity(): string {
     return this.constructor.name;
